@@ -1,11 +1,10 @@
 package com.parth.demo.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +13,63 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @NotNull
-    private String Name;
+    private String name;
+    @NotNull
+    @Email
+    @Column(unique=true)
+    private String email;
+    @NotNull
+    private String address;
+    @NotNull
+    private LocalDate dateOfBirth;
+    @NotNull
+    private LocalDate registedDate;
 
+    public LocalDate getRegistedDate() {
+        return registedDate;
+    }
+
+    public void setRegistedDate(LocalDate registedDate) {
+        this.registedDate = registedDate;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }
